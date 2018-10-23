@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sequel'
 require 'logger'
 
@@ -12,8 +14,8 @@ module Brawlhalla
     def connect!
       db_file = File.join(root, 'db', 'development.sqlite3')
 
-      @connection = Sequel.connect("sqlite://#{db_file}", logger: Logger.new(STDOUT))
-      # @connection = Sequel.connect("sqlite://#{db_file}")
+      # @connection = Sequel.connect("sqlite://#{db_file}", logger: Logger.new(STDOUT))
+      @connection = Sequel.connect("sqlite://#{db_file}")
     end
 
     def root

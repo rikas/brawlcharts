@@ -20,7 +20,7 @@
 
       data.addRows([
         <% @rankings.each.with_index do |ranking, index| %>
-          <%= "[new Date('#{ranking.created_at.to_s}'), #{ranking.elo}, 1286, 1338, 1389]," %>
+          <%= "[new Date('#{ranking.date}'), #{ranking.elo}, 1286, 1338, 1389]," %>
           <%#= "[#{index}, #{ranking.elo}, 1286, 1338, 1389]," %>
         <% end %>
       ]);

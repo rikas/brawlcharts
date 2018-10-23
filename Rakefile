@@ -5,4 +5,6 @@ require 'brawlhalla/db'
 
 Brawlhalla::DB.connect!
 
-require 'brawlhalla/tasks/players'
+require 'brawlhalla'
+
+import 'tasks/players.rake'
