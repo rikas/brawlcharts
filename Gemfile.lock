@@ -11,6 +11,7 @@ PATH
       puma
       rack
       rainbow
+      rake
       sequel
       sinatra
 
@@ -43,6 +44,7 @@ GEM
     rack-protection (2.0.4)
       rack
     rainbow (3.0.0)
+    rake (12.3.1)
     sequel (5.13.0)
     sinatra (2.0.4)
       mustermann (~> 1.0)

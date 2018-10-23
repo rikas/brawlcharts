@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'pry-byebug'
   spec.add_dependency 'puma'
   spec.add_dependency 'rack'
+  spec.add_dependency 'rake'
   spec.add_dependency 'rainbow'
   spec.add_dependency 'sequel'
   spec.add_dependency 'sinatra'
