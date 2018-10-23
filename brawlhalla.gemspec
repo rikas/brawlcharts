@@ -26,10 +26,13 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'addressable'
   spec.add_dependency 'faraday'
   spec.add_dependency 'nokogiri'
+  spec.add_dependency 'pg'
   spec.add_dependency 'pry-byebug'
+  spec.add_dependency 'puma'
   spec.add_dependency 'rack'
   spec.add_dependency 'rainbow'
   spec.add_dependency 'sequel'
   spec.add_dependency 'sinatra'
-  spec.add_dependency 'sqlite3'
+
+  spec.add_development_dependency 'sqlite3'
 end
