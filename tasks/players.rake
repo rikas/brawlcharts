@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rainbow'
-require 'brawlhalla/models'
+#require 'brawlhalla/models'
 require 'brawlhalla/elo_parser'
 
 namespace :players do

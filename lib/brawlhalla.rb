@@ -2,8 +2,6 @@
 
 require 'brawlhalla/version'
 require 'brawlhalla/db'
-# require 'brawlhalla/models'
-# require 'brawlhalla/api'
 
 module Brawlhalla
   def self.root
