@@ -8,3 +8,4 @@ Brawlhalla::DB.connect!
 require 'brawlhalla'
 
 import 'tasks/players.rake'
+import 'tasks/db.rake'

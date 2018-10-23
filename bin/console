@@ -2,11 +2,11 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
-require 'brawlhalla/db'
+require 'brawlhalla'
 
 Brawlhalla::DB.connect!
 
-require 'brawlhalla'
+require 'brawlhalla/models'
 
 include Brawlhalla
 

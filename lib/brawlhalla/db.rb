@@ -12,14 +12,20 @@ module Brawlhalla
     end
 
     def connect!
-      db_file = File.join(root, 'db', 'development.sqlite3')
-
-      # @connection = Sequel.connect("sqlite://#{db_file}", logger: Logger.new(STDOUT))
-      @connection = Sequel.connect("sqlite://#{db_file}")
+      @connection = Sequel.connect(
+        adapter: :postgres,
+        database: 'brawlcharts',
+        max_connections: 10
+      )
     end
 
     def root
       File.expand_path('../../', File.dirname(__FILE__))
     end
+  end
+
+  def self.env
+    env = ENV['RACK_ENV'] || ENV['RAILS_ENV'] || 'development'
+    env.to_sym
   end
 end

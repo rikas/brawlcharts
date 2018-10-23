@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require 'brawlhalla/version'
-require 'brawlhalla/models'
 require 'brawlhalla/db'
-require 'brawlhalla/api'
+# require 'brawlhalla/models'
+# require 'brawlhalla/api'
 
 module Brawlhalla
   def self.root
@@ -16,6 +16,10 @@ module Brawlhalla
 
   def self.assets_dir
     File.join(app_dir, 'assets')
+  end
+
+  def self.db_dir
+    File.join(root, 'db')
   end
 
   def self.views_dir(subfolder = '')

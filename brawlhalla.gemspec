@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = Dir['spec/*']
 
   spec.add_dependency 'addressable'
+  spec.add_dependency 'dotenv'
   spec.add_dependency 'faraday'
   spec.add_dependency 'nokogiri'
   spec.add_dependency 'pg'
@@ -33,6 +34,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rainbow'
   spec.add_dependency 'sequel'
   spec.add_dependency 'sinatra'
-
-  spec.add_development_dependency 'sqlite3'
 end

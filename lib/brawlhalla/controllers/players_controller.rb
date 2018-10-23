@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'sinatra'
+require 'brawlhalla/models'
 
 module Brawlhalla
   class PlayersController < Sinatra::Application
