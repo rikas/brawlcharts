@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 require 'rainbow'
-#require 'brawlhalla/models'
+require 'brawlhalla'
+
+Brawlhalla::DB.connect!
+
+require 'brawlhalla/models'
 require 'brawlhalla/elo_parser'
 
 namespace :players do
@@ -10,6 +14,8 @@ namespace :players do
     name = args[:name]
 
     current_elo = Brawlhalla::EloParser.parse(name)
+
+    puts Rainbow("Current elo: #{current_elo}").magenta
 
     error("Could not get elo for player #{name}") unless current_elo.positive?
 
@@ -30,7 +36,9 @@ namespace :players do
 
     players.each do |player|
       puts "Updating #{player.name}..."
+
       Rake::Task['players:update'].invoke(player.name)
+      Rake::Task['players:update'].reenable
     end
   end
 end

@@ -1,4 +1,8 @@
 # frozen_string_literal: true
+
+require 'addressable'
+require 'faraday'
+
 module Brawlhalla
   class API
     BASE_URL = 'http://www.brawlhalla.com/rankings/1v1/eu/'

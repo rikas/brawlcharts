@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'addressable'
-require 'faraday'
 require 'sequel/model'
 
 module Brawlhalla
