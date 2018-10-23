@@ -15,7 +15,8 @@ module Brawlhalla
       @connection = Sequel.connect(
         adapter: :postgres,
         database: 'brawlcharts',
-        max_connections: 10
+        max_connections: 10,
+        password: ENV['DATABASE_PASSWORD']
       )
     end
 
