@@ -12,12 +12,11 @@ module Brawlhalla
     end
 
     def connect!
-      @connection = Sequel.connect(
-        adapter: :postgres,
-        database: 'brawlcharts',
-        max_connections: 10,
-        password: ENV['DATABASE_PASSWORD']
-      )
+      @connection = if Brawlhalla.env == :development
+                      Sequel.connect(adapter: :postgres, database: 'brawlcharts')
+                    else
+                      Sequel.connect(ENV['DATABASE_URL'])
+                    end
     end
 
     def root
