@@ -1,101 +1,99 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Player <%= @player.name %></title>
-    <link rel="stylesheet" href="styles/master.css">
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<h1 class="title"><%= @player.name %></h1>
+<h4 class="subtitle">Last <%= @rankings.count %> days</h4>
 
-    <script type="text/javascript">
-      google.charts.load('current', {packages: ['corechart', 'line']});
-      google.charts.setOnLoadCallback(drawChart);
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/players">Players</a></li>
+    <li class="is-active"><a href="#" aria-current="page"><%= @player.name %></a></li>
+  </ul>
+</nav>
 
-      function drawChart() {
-      var data = new google.visualization.DataTable();
-      data.addColumn('date', 'Time');
-      data.addColumn('number', 'ELO');
-      data.addColumn('number', 'Silver 4')
-      data.addColumn('number', 'Silver 5')
-      data.addColumn('number', 'Gold')
+<div id="chart_div"></div>
 
-      data.addRows([
-        <% @rankings.each.with_index do |ranking, index| %>
-          <%= "[new Date('#{ranking.date}'), #{ranking.elo}, 1286, 1338, 1389]," %>
-          <%#= "[#{index}, #{ranking.elo}, 1286, 1338, 1389]," %>
-        <% end %>
-      ]);
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-      var options = {
-        height: 300,
-        lineWidth: 1,
-        chartArea: {
-          height: '80%'
+<script type="text/javascript">
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('date', 'Time');
+    data.addColumn('number', 'ELO');
+    data.addColumn('number', 'Silver 4')
+    data.addColumn('number', 'Silver 5')
+    data.addColumn('number', 'Gold')
+
+    data.addRows([
+      <% @rankings.each.with_index do |ranking, index| %>
+        <%= "[new Date('#{ranking.date}'), #{ranking.elo}, 1286, 1338, 1389]," %>
+        <%#= "[#{index}, #{ranking.elo}, 1286, 1338, 1389]," %>
+      <% end %>
+    ]);
+
+    var options = {
+      height: 300,
+      lineWidth: 1,
+      chartArea: {
+        height: '80%'
+      },
+      series: {
+        0: {
+          color: '#ff0000',
+          pointsVisible: true,
+          pointSize: 3
         },
-        series: {
-          0: {
-            color: '#ff0000',
-            pointsVisible: true,
-            pointSize: 3
-          },
-          1: {
-            lineDashStyle: [4, 4],
-            color: '#ccc',
-            opacity: 0.8,
-            pointsVisible: false,
-            visibleInLegend: false,
-            enableInteractivity: false
-          },
-          2: {
-            lineDashStyle: [4, 4],
-            color: '#888',
-            opacity: 0.8,
-            pointsVisible: false,
-            visibleInLegend: false,
-            enableInteractivity: false
-          },
-          3: {
-            lineDashStyle: [4, 4],
-            color: 'orange',
-            pointsVisible: false,
-            visibleInLegend: false,
-            enableInteractivity: false
-          }
+        1: {
+          lineDashStyle: [4, 4],
+          color: '#ccc',
+          opacity: 0.8,
+          pointsVisible: false,
+          visibleInLegend: false,
+          enableInteractivity: false
         },
-        hAxis: {
-          format: 'yyy/M/dd',
-          gridlines: {
-            color: '#e7e7e7',
-            count: 2
-          }
+        2: {
+          lineDashStyle: [4, 4],
+          color: '#888',
+          opacity: 0.8,
+          pointsVisible: false,
+          visibleInLegend: false,
+          enableInteractivity: false
         },
-        vAxis: {
-          title: 'ELO EVOLUTION',
-          format: '',
-          ticks: [
-            1200,
-            1300,
-            1400,
-            {v: 1286, f: 'Silver 4'},
-            {v: 1338, f: 'Silver 5'},
-            {v: 1389, f: 'Gold'}
-          ],
-          gridlines: {
-            color: '#e7e7e7',
-            count: -1
-          },
+        3: {
+          lineDashStyle: [4, 4],
+          color: 'orange',
+          pointsVisible: false,
+          visibleInLegend: false,
+          enableInteractivity: false
+        }
+      },
+      hAxis: {
+        format: 'yyy/M/dd',
+        gridlines: {
+          color: '#e7e7e7',
+          count: 2
+        }
+      },
+      vAxis: {
+        title: 'ELO EVOLUTION',
+        format: '',
+        ticks: [
+          1200,
+          1300,
+          1400,
+          {v: 1286, f: 'Silver 4'},
+          {v: 1338, f: 'Silver 5'},
+          {v: 1389, f: 'Gold'}
+        ],
+        gridlines: {
+          color: '#e7e7e7',
+          count: -1
         },
-        backgroundColor: '#f1f8e9'
-      };
+      },
+      backgroundColor: '#f1f8e9'
+    };
 
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-      chart.draw(data, options);
-    }
-    </script>
-  </head>
-
-  <body>
-    <h1><%= @player.name %></h1>
-    <h4>Last <%= @rankings.count %> days</h4>
-    <div id="chart_div"></div>
-  </body>
-</html>
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+</script>

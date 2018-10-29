@@ -1,0 +1,9 @@
+<h1 class="title">List of players</h1>
+
+<ul>
+  <% @players.each do |player| %>
+    <li>
+      <a href="/players/<%= player.name %>"><%= player.name %></a> (<%= player.rankings.last.elo %>)
+    </li>
+  <% end %>
+</ul>
