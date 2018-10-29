@@ -10,4 +10,5 @@ Brawlhalla::DB.connect!
 require 'brawlhalla'
 require 'brawlhalla/controllers'
 
+map('/') { run Brawlhalla::ApplicationController }
 map('/players') { run Brawlhalla::PlayersController }
