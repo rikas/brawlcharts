@@ -2,13 +2,23 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
-require 'brawlhalla'
+require 'brawlcharts'
 
-Brawlhalla::DB.connect!
+Brawlcharts::DB.connect!
 
-require 'brawlhalla/models'
+require 'dotenv'
+Dotenv.load
 
-include Brawlhalla
+require 'brawlhalla/api'
+
+Brawlhalla::API.configure do |config|
+  config.api_key = ENV['BRAWLHALLA_API_KEY']
+  config.debug = false
+end
+
+require 'brawlcharts/models'
+
+include Brawlcharts
 
 require 'pry'
 Pry.start

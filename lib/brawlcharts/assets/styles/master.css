@@ -1,0 +1,21 @@
+body {
+  font-family: sans-serif;
+}
+
+.subtitle--player-summary {
+}
+
+.subtitle--player-summary__item {
+  display: inline-block;
+}
+
+.subtitle--player-summary__item::after {
+  display: inline-block;
+  content: "·";
+  font-weight: bold;
+  color: #bbb;
+}
+
+.subtitle--player-summary__item:last-child::after {
+  display: none;
+}

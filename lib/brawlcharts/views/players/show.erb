@@ -1,5 +1,15 @@
-<h1 class="title"><%= @player.name %></h1>
-<h4 class="subtitle">Last <%= @rankings.count %> days</h4>
+<h1 class="title"><%= @player.name %> (level <%= @player.level %>)</h1>
+<h4 class="subtitle subtitle--player-summary">
+  <span class="subtitle--player-summary__item">
+    Elo rating: <strong><%= @player.rating %></strong>
+  </span>
+  <span class="subtitle--player-summary__item">
+    Best elo: <strong><%= @player.peak_rating %></strong>
+  </span>
+  <span class="subtitle--player-summary__item">
+    Win percentage: <strong><%= @player.win_percentage %>%</strong>
+  </span>
+</h4>
 
 <nav class="breadcrumb" aria-label="breadcrumbs">
   <ul>

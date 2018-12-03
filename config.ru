@@ -3,12 +3,12 @@ $LOAD_PATH.unshift(File.expand_path('lib/', File.dirname(__FILE__)))
 require 'dotenv'
 Dotenv.load
 
-require 'brawlhalla/db'
+require 'brawlcharts/db'
 
-Brawlhalla::DB.connect!
+Brawlcharts::DB.connect!
 
-require 'brawlhalla'
-require 'brawlhalla/controllers'
+require 'brawlcharts'
+require 'brawlcharts/controllers'
 
-map('/') { run Brawlhalla::ApplicationController }
-map('/players') { run Brawlhalla::PlayersController }
+map('/') { run Brawlcharts::ApplicationController }
+map('/players') { run Brawlcharts::PlayersController }

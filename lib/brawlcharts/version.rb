@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-module Brawlhalla
+module Brawlcharts
   VERSION = '0.0.1'
 end

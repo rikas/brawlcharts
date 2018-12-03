@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require 'nokogiri'
-require 'brawlhalla/api'
+require 'brawlcharts/api'
 
-module Brawlhalla
+module Brawlcharts
   class EloParser
     def self.parse(name)
       html_table = API.new(name).html_table

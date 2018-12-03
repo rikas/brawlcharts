@@ -3,17 +3,17 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'brawlhalla/version'
+require 'brawlcharts/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'brawlhalla'
-  spec.version       = Brawlhalla::VERSION
+  spec.name          = 'brawlcharts'
+  spec.version       = Brawlcharts::VERSION
   spec.authors       = ['Ricardo Otero']
   spec.email         = ['oterosantos@gmail.com']
 
-  spec.summary       = 'Brawlhalla Stats'
-  spec.description   = 'Sinatra app to track Brawlhalla players ranking.'
-  spec.homepage      = 'http://brawlhalla-stats.com'
+  spec.summary       = 'Brawlhalla Charts'
+  spec.description   = 'Sinatra app to track Brawlhalla players stats.'
+  spec.homepage      = 'http://brawlcharts.herokuapp.com'
   spec.license       = 'MIT'
 
   spec.bindir        = 'bin'
@@ -35,4 +35,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rainbow'
   spec.add_dependency 'sequel'
   spec.add_dependency 'sinatra'
+  spec.add_dependency 'brawlhalla-api'
 end

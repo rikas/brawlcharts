@@ -2,7 +2,7 @@
 
 require 'sequel/model'
 
-module Brawlhalla
+module Brawlcharts
   class Ranking < Sequel::Model
   end
 end

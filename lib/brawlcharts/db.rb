@@ -3,7 +3,7 @@
 require 'sequel'
 require 'logger'
 
-module Brawlhalla
+module Brawlcharts
   class DB
     attr_accessor :connection
 
@@ -12,15 +12,23 @@ module Brawlhalla
     end
 
     def connect!
-      @connection = if Brawlhalla.env == :development
-                      Sequel.connect(adapter: :postgres, database: 'brawlcharts')
-                    else
-                      Sequel.connect(ENV['DATABASE_URL'])
-                    end
+      @connection ||= make_connection
     end
 
     def root
       File.expand_path('../../', File.dirname(__FILE__))
+    end
+
+    private
+
+    def make_connection
+      return Sequel.connect(adapter: :postgres, database: 'brawlcharts') if development?
+
+      Sequel.connect(ENV['DATABASE_URL'])
+    end
+
+    def development?
+      Brawlcharts.env == :development
     end
   end
 

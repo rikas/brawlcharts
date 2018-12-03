@@ -2,7 +2,7 @@
 
 require 'sinatra'
 
-module Brawlhalla
+module Brawlcharts
   class ApplicationController < Sinatra::Application
     get '/' do
       redirect '/players'

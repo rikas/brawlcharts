@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 require 'sinatra'
-require 'brawlhalla/models'
+require 'brawlcharts/models'
 
-module Brawlhalla
+module Brawlcharts
   class PlayersController < Sinatra::Application
-    set :public_folder, -> { Brawlhalla.assets_dir }
-    set :views, -> { Brawlhalla.views_dir }
+    set :public_folder, -> { Brawlcharts.assets_dir }
+    set :views, -> { Brawlcharts.views_dir }
     enable :logging
     enable :static
     # disable :dump_errors
