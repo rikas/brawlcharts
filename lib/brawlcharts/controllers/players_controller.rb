@@ -21,7 +21,7 @@ module Brawlcharts
 
     get '/:name' do
       @player = Player.find(name: params[:name])
-      @rankings = Ranking.where(player_id: player.id).order(:date).all
+      @rankings = Ranking.where(player_id: @player.id).order(:date).all
       @title = "Player #{@player.name}"
 
       erb :'players/show', layout: :application
