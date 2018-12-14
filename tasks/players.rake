@@ -41,17 +41,16 @@ namespace :players do
         rating: current_elo,
         peak_rating: remote_player.ranking.peak_rating
       )
+
+      ranking = Brawlcharts::Ranking.find(player_id: local_player.id, date: Date.today)
+
+      if ranking
+        ranking.update(elo: current_elo)
+      else
+        Brawlcharts::Ranking.create(player_id: local_player.id, elo: current_elo, date: Date.today)
+      end
     else
       puts Rainbow("Player has no matches this season").red
-    end
-
-    ranking = Brawlcharts::Ranking.find(player_id: local_player.id, date: Date.today)
-
-    if ranking && current_elo
-      ranking.update(elo: current_elo)
-    else
-      elo = current_elo || 0
-      Brawlcharts::Ranking.create(player_id: local_player.id, elo: elo, date: Date.today)
     end
   end
 
