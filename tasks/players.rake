@@ -26,27 +26,31 @@ namespace :players do
     remote_player = Brawlhalla::API::Player.find(local_player.brawlhalla_id)
     current_elo = remote_player.ranking.rating
 
-    puts Rainbow("Remote rating: #{current_elo}").magenta
-
-    error("Could not get elo for player #{current_elo}") unless current_elo.positive?
-
-    ranking = Brawlcharts::Ranking.find(player_id: local_player.id, date: Date.today)
-
     # Update player fields
     local_player.update(
       name: remote_player.name,
       games: remote_player.games,
       wins: remote_player.wins,
-      level: remote_player.level,
-      rating: current_elo,
-      peak_rating: remote_player.ranking.peak_rating
+      level: remote_player.level
     )
 
-    if ranking
+    if current_elo
+      puts Rainbow("Remote rating: #{current_elo}").magenta
 
+      local_player.update(
+        rating: current_elo,
+        peak_rating: remote_player.ranking.peak_rating
+      )
+    else
+      puts Rainbow("Player has no matches this season").red
+    end
+
+    ranking = Brawlcharts::Ranking.find(player_id: local_player.id, date: Date.today)
+
+    if ranking && current_elo
       ranking.update(elo: current_elo)
     else
-      Brawlcharts::Ranking.create(player_id: local_player.id, elo: current_elo, date: Date.today)
+      Brawlcharts::Ranking.create(player_id: local_player.id, elo: 0, date: Date.today)
     end
   end
 
