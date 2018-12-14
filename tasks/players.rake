@@ -50,7 +50,8 @@ namespace :players do
     if ranking && current_elo
       ranking.update(elo: current_elo)
     else
-      Brawlcharts::Ranking.create(player_id: local_player.id, elo: 0, date: Date.today)
+      elo = current_elo || 0
+      Brawlcharts::Ranking.create(player_id: local_player.id, elo: elo, date: Date.today)
     end
   end
 
