@@ -53,7 +53,7 @@ GEM
     rack-protection (2.0.4)
       rack
     rainbow (3.0.0)
-    rake (12.3.1)
+    rake (13.0.1)
     sequel (5.14.0)
     sinatra (2.0.4)
       mustermann (~> 1.0)
