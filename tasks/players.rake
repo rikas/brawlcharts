@@ -21,7 +21,7 @@ require 'brawlcharts/models'
 namespace :players do
   desc 'Updates the stats and ranking of a particular player'
   task :update, [:name] do |_, args|
-    local_player = Brawlcharts::Player.where(name: args[:name]).first
+    local_player = Brawlcharts::Player.find_by(name: args[:name])
 
     remote_player = Brawlhalla::API::Player.find(local_player.brawlhalla_id)
     current_elo = remote_player.ranking.rating
